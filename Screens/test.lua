@@ -7,6 +7,7 @@ local gfx = require("ctr.gfx")
 local hid = require("ctr.hid")
 local ui = require("Modules/UI")
 local SM = require("Modules/ScreenManager")
+local SB = require("Modules/StatusBar")
 local ReportGenerator = require("Core/ReportGenerator")
 
 function TestScreen:Init()
@@ -14,23 +15,10 @@ function TestScreen:Init()
 end
 -- Top Screen
 function TestScreen:RenderTopScreen()
-    
-end
-
-function getBytes(num)
-    return math.floor(num / 2^24), math.floor((num % 2^24) / 2^16),
-           math.floor((num % 2^16) / 2^8), num % 2^8
-end
-
-function sensorToBytes(x,y,z)
-    x = math.floor(((x/1000)*127) + 128)
-    y = math.floor(((y/1000)*127) + 128)
-    z = math.floor(((z/1000)*127) + 128)
-    return x,y,z
+    SB.Render()
 end
 
 local frames = 0
-
 local prevR = ""
 
 -- Bottom Screen

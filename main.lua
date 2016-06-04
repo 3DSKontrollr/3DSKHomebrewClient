@@ -1,4 +1,5 @@
 local ctr = require("ctr")
+local ptm = require("ctr.ptm")
 local gfx = require("ctr.gfx")
 local hid = require("ctr.hid")
 local font = require("ctr.gfx.font")
@@ -17,6 +18,8 @@ udp = socket.udp()
 --tcp:bind(3333)
 connection = {}
 
+ptm.init()
+
 -- Screen Manager
 screenManager:Init()
 screenManager:LoadScreen("test")
@@ -27,11 +30,12 @@ CONSOLE = false
 
 -- The Main Loop
 while ctr.run() do
-    -- Exit on Start+Select
     hid.read()
+    -- Exit on Start+Select
     keys = hid.keys()
     if keys.held.start and keys.held.select then
         socket.shutdown()
+        ptm.shutdown()
         break
     end
     -- Toggle console with L+Start in debug mode
