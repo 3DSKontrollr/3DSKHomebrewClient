@@ -31,6 +31,9 @@ function TestScreen:RenderBottomScreen()
         ReportGenerator.accelEnabled = not ReportGenerator.accelEnabled
         ReportGenerator.gyroEnabled = not ReportGenerator.gyroEnabled
     end
+    if ui.Button(4,180,256,32,"Establish Connection [WIP]") then
+        SM:LoadScreen("connection")
+    end
     local rep = ReportGenerator.GenerateReport()
     gfx.text(2,2, rep)
     frames = frames+1
