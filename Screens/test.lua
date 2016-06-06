@@ -10,6 +10,9 @@ local SM = require("Modules/ScreenManager")
 local SB = require("Modules/StatusBar")
 local ReportGenerator = require("Core/ReportGenerator")
 
+-- Put your computer's IP address here
+local serverIp = "192.168.0.106"
+
 function TestScreen:Init()
 
 end
@@ -38,7 +41,7 @@ function TestScreen:RenderBottomScreen()
     gfx.text(2,2, rep)
     frames = frames+1
     if rep ~= prevR or frames >= 60 then
-        udp:sendto(rep,"192.168.0.106",33333)
+        udp:sendto(rep,serverIp,33333)
         frames = 0
     end
     prevR = rep
