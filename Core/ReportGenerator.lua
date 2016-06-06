@@ -39,15 +39,8 @@ function ReportGenerator.GenerateReport()
     -- Circle Pad
         local px,py = hid.circle()
         d=d..px..":"..py..":"
-    -- Circle Pad Pro / New 3DS C-Stick
-        -- (why ctrµLua?? why??)
-        local cx = 0
-        if keys.held.cstickRight then cx = cx + 154 end
-        if keys.held.cstickLeft  then cx = cx - 154 end
-        -- (WHYYY???)
-        local cy = 0
-        if keys.held.cstickUp   then cy = cy + 155 end
-        if keys.held.cstickDown then cy = cy - 155 end
+    -- New 3DS C-Stick
+        local cx,cy = hid.cstick()
         d=d..cx..":"..cy..":"
      -- Accelerometer
         if ReportGenerator.accelEnabled then
