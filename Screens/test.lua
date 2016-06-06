@@ -9,6 +9,7 @@ local ui = require("Modules/UI")
 local SM = require("Modules/ScreenManager")
 local SB = require("Modules/StatusBar")
 local ReportGenerator = require("Core/ReportGenerator")
+local theme = require("Modules/themes").current
 
 -- Put your computer's IP address here
 local serverIp = "192.168.0.106"
@@ -18,6 +19,7 @@ function TestScreen:Init()
 end
 -- Top Screen
 function TestScreen:RenderTopScreen()
+    theme.topScreenBG:draw(0,0)
     SB.Render()
 end
 
@@ -26,6 +28,7 @@ local prevR = ""
 
 -- Bottom Screen
 function TestScreen:RenderBottomScreen()
+    theme.bottomScreenBG:draw(0,0)
     keys = hid.keys()
     if ui.Button(32,180-48,256,32,"About") then
         SM:LoadScreen("splash")
@@ -41,7 +44,9 @@ function TestScreen:RenderBottomScreen()
     gfx.text(2,2, rep)
     frames = frames+1
     if rep ~= prevR or frames >= 60 then
-        udp:sendto(rep,serverIp,33333)
+        pcall(function()
+            udp:sendto(rep,serverIp,33333)
+        end)
         frames = 0
     end
     prevR = rep

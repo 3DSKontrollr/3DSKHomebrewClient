@@ -10,7 +10,7 @@ local theme = require("Modules/themes").current
 
 function KeyboardTestScreen:Init()
     self.kb = KB.CreateNumeric()
-    self.bg = false
+    self.bg = true
     self.lastKey = ""
     self.kb.onKeyPress = function(sender,key)
         KeyboardTestScreen.lastKey = "Last pressed key: " .. key

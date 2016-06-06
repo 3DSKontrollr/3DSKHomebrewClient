@@ -14,9 +14,6 @@ font.setDefault(font.load("Resources/Font/roboto.ttf"))
 -- Sockets
 socket.init()
 udp = socket.udp()
---tcp = socket.tcp()
---tcp:bind(3333)
-connection = {}
 
 ptm.init()
 
