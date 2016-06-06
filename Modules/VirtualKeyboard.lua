@@ -20,7 +20,7 @@ nKeyboard._tempVal = ""
 -- Keyboard is passed as first parameter and the pressed key as second parameter.
 nKeyboard.onKeyPress = nil
 --- Character limit for the keyboard.
-nKeyboard.maxLength = 100
+nKeyboard.maxLength = 35
 --- Pattern for keyboard input.
 nKeyboard.pattern = ".*"
 --- Show the dot character.
@@ -35,7 +35,7 @@ function nKeyboard:Render()
     gfx.rectangle(0,0,320,75,0,theme.kbTextBackground)
     gfx.text(2,2,self.hint)
     gfx.line(20,60,300,60, 2)
-    gfx.text(20,42,self._tempVal)
+    gfx.text(18,42,self._tempVal)
     -- background
     gfx.rectangle(0,75,320,165,0,theme.kbBackground)
     -- Keys
@@ -60,7 +60,9 @@ end
 
 --- Keeps track of key presses and triggers the onKeyPress event (if any).
 function nKeyboard:KeyPress(key)
-    self._tempVal = self._tempVal..key
+    if string.len(self._tempVal) < self.maxLength then
+        self._tempVal = self._tempVal..key
+    end
     if self.onKeyPress ~= nil then
         pcall(function() self:onKeyPress(key) end)
     end
