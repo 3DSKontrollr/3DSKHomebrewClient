@@ -16,6 +16,7 @@ local DefaultTheme =
     buttonForeground = color.hex(0xFFFFFFEE),
     buttonPressedBG  = color.hex(0xEFEFEFFF),
     buttonPressedFG  = color.hex(0x000000FF),
+    statusBarBG      = color.hex(0x000000C8),
     spinnerTexture   = tex.load("Resources/Texture/spinner.png"),
     topScreenBG      = tex.load("Resources/Texture/bg_top.png"),
     bottomScreenBG   = tex.load("Resources/Texture/bg_bottom.png"),
