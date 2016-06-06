@@ -1,5 +1,5 @@
-# 3DSKontrollr+ - Control your PC using your Nintendo 3DS.
 ![](Resources/logo.png)
+# Control your PC using your Nintendo 3DS.
 
 **NOTE: THIS IS IN A VERY EARLY STAGE OF DEVELOPMENT. IT'S FUNCTIONAL, BUT MOST THINGS ARE HARDCODED RIGHT NOW**
 
