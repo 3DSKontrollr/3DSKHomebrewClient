@@ -1,5 +1,6 @@
 --- 3DSK Internal Server.
 -- This manages the TCP sockets
+-- (It doesn't work for now, see https://github.com/ctruLua/ctruLua/issues/10)
 -- @module InternalServer
 local InternalServer = {}
 
