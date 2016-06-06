@@ -11,7 +11,7 @@ local SB = require("Modules/StatusBar")
 local ReportGenerator = require("Core/ReportGenerator")
 
 function TestScreen:Init()
-    
+
 end
 -- Top Screen
 function TestScreen:RenderTopScreen()
@@ -24,14 +24,14 @@ local prevR = ""
 -- Bottom Screen
 function TestScreen:RenderBottomScreen()
     keys = hid.keys()
-    if ui.Button(4,180-48,256,32,"About") then
+    if ui.Button(32,180-48,256,32,"About") then
         SM:LoadScreen("splash")
     end
-    if ui.Button(4,180-96,256,32,"Toggle Sensors") then
+    if ui.Button(32,180-96,256,32,"Toggle Sensors") then
         ReportGenerator.accelEnabled = not ReportGenerator.accelEnabled
         ReportGenerator.gyroEnabled = not ReportGenerator.gyroEnabled
     end
-    if ui.Button(4,180,256,32,"Establish Connection [WIP]") then
+    if ui.Button(32,180,256,32,"Establish Connection [WIP]") then
         SM:LoadScreen("connection")
     end
     local rep = ReportGenerator.GenerateReport()
