@@ -31,8 +31,8 @@ function TestScreen:RenderBottomScreen()
         ReportGenerator.accelEnabled = not ReportGenerator.accelEnabled
         ReportGenerator.gyroEnabled = not ReportGenerator.gyroEnabled
     end
-    if ui.Button(32,180,256,32,"Establish Connection [WIP]") then
-        SM:LoadScreen("connection")
+    if ui.Button(32,180,256,32,"Keyboard Test") then
+        SM:LoadScreen("keybtest")
     end
     local rep = ReportGenerator.GenerateReport()
     gfx.text(2,2, rep)

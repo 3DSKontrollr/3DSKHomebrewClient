@@ -76,7 +76,7 @@ function UISystem.Button(x,y,w,h,text,enabled,triggerOnHold,size,theme)
     -- Calculate the horizontal center of the text (thanks Phalk, i used some code from your Crimson Scripter here)
     local textX = (x+w/2) - ((string.len(text)) / 2) * (size/2)
     -- Calculate the vertical center of the text
-    local textY = y + (h - tby)/2
+    local textY = y-2 + (h - tby)/2
     -- Draw the text, centered vertically AND horizontally :)
     gfx.wrappedText(math.floor(textX), textY,text,w,size,foreground,theme.uiFont)
     -- Return true if the button is being held
