@@ -30,7 +30,7 @@ I used Lua in first place because i'm not good with C (yeah, make fun of me).
 
 The most popular choice for programming 3ds homebrew in lua is [LPP](https://github.com/Rinnegatamante/lpp-3ds). However there are some good reasons i decided to use ctrµLua:
  - **The API is more organised**: Not only it has a good documentation (unlike LPP which is a mess), but it puts everything in modules, and i feel at home using `require` to import only what i need, just like in nodejs.
- - **It's more inclined to Object Oriented Programming**: While in LPP methods like `Screen.loadImage` returns an id, which you have to include as a parameter in every draw method, the ctrµLua equivalent (`ctr.gfx.texture.load`) returns a table, which contains all the methods you need, and you can directly do stuff with it, ie. `tex:draw(x,y)`.
+ - **It's more inclined to Object Oriented Programming**: While in LPP methods like `Screen.loadImage` return IDs, which you have to include as parameters in every related methods, the ctrµLua equivalent (`ctr.gfx.texture.load`) returns a table, which contains all the methods you need, and you can directly do stuff with it (ie. `tex:draw(x,y)`).
  - **It has UDP support**: This is the most important point. UDP is important since this little bitch sends a lot of data over the network, and TCP is unreliable for sending input data in real time. Sure, [TCP is broken right now](https://github.com/ctruLua/ctruLua/issues/10), but i can deal with that.
 
 So if you haven't tried ctrµLua, you must do it. Right now. Okno, but seriously, they deserve more attention.
