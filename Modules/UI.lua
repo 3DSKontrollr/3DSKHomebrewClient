@@ -71,14 +71,10 @@ function UISystem.Button(x,y,w,h,text,enabled,triggerOnHold,size,theme)
 
     -- Draw the background
     gfx.rectangle(x,y,w,h,0,background)
-    -- Calculate the space the text will take
-    local tbx, tby = gfx.calcBoundingBox(text, w, size, theme.uiFont)
-    -- Calculate the horizontal center of the text (thanks Phalk, i used some code from your Crimson Scripter here)
-    local textX = (x+w/2) - ((string.len(text)) / 2) * (size/2)
-    -- Calculate the vertical center of the text
-    local textY = y-2 + (h - tby)/2
-    -- Draw the text, centered vertically AND horizontally :)
-    gfx.wrappedText(math.floor(textX), textY,text,w,size,foreground,theme.uiFont)
+
+    -- Draw the text
+    UISystem.CenteredText(x,y,w,h,text,size,foreground)
+
     -- Return true if the button is being held
     return pressed
 end
@@ -86,8 +82,35 @@ end
 --- Decorative Elements
 -- To make the app look neat
 -- @section Decorative
-function UISystem.Spinner(x,y,s)
+
+--- Spinner.
+-- For loading screens and stuff
+-- @int x X position
+-- @int y Y position
+function UISystem.Spinner(x,y)
     Themes.current.spinnerTexture:draw(x,y,UISystem.spinnerRad,16,16)
 end
+
+--- Centered text.
+-- @int x X position
+-- @int y Y position
+-- @int w Container Width
+-- @int h Container Height
+-- @string text Text to display
+-- @int[opt] size Text size.
+-- @param[opt] color Text color.
+function UISystem.CenteredText(x,y,w,h,text,size,color)
+    color = color or Themes.current.uiForeground
+    size = size or gfx.font.getSize()
+    -- Calculate the space the text will take
+    local tbx, tby = gfx.calcBoundingBox(text, w, size, Themes.current.uiFont)
+    -- Calculate the horizontal center of the text (thanks Phalk, i used some code from your Crimson Scripter here)
+    local textX = (x+w/2) - ((string.len(text)) / 2.2) * (size/2)
+    -- Calculate the vertical center of the text
+    local textY = y-2 + (h - tby)/2
+    -- Draw the text, centered vertically AND horizontally :)
+    gfx.text(math.floor(textX), textY, text, size,foreground,Themes.current.uiFont)
+end
+
 
 return UISystem
