@@ -7,6 +7,11 @@ local fs = require("ctr.fs")
 local socket = require("ctr.socket")
 local screenManager = require("Modules/ScreenManager")
 
+-- Make debug a global variable
+debug = require("Core/DebugStuff")
+
+_3DSKVERSION = "0.1.0"
+
 -- GFX Defaults
 font.setSize(14)
 font.setDefault(font.load("Resources/Font/roboto.ttf"))
@@ -21,9 +26,9 @@ ptm.init()
 screenManager:Init()
 screenManager:LoadScreen("test")
 
--- Debug Mode
-DEBUG = true
-CONSOLE = false
+-- Debugging
+debug.Init()
+debug.Write("\n-- Starting 3DSKontrollr+ Homebrew Client v0.1 --\n","(", os.date("%c"), ")\n\n")
 
 -- The Main Loop
 while ctr.run() do
@@ -35,16 +40,7 @@ while ctr.run() do
         ptm.shutdown()
         break
     end
-    -- Toggle console with L+Start in debug mode
-    if DEBUG and keys.down.start and keys.held.l then
-        if CONSOLE then
-            CONSOLE=false
-            gfx.disableConsole()
-        else
-            CONSOLE=true
-            gfx.console()
-        end
-    end
+
     -- ScreenManager is all we need
     screenManager:Render()
 end

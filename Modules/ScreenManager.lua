@@ -51,13 +51,10 @@ function ScreenManager:Render(screenName)
     if screen.PreRender ~= nil then screen:PreRender() end
     -- Top Screen
     gfx.start(gfx.TOP)
-        if not CONSOLE then
+        if not debug.consoleState then
             UI.isTopScreen = true
             if screen.RenderTopScreen ~= nil then screen:RenderTopScreen() end
-            if DEBUG then
-                gfx.text(2, 220 , "FPS"..gfx.getFPS(), nil, gfx.color.hex(0xFFFFFF80))
-                gfx.text(310, 220 , "DEBUG MODE", nil, gfx.color.hex(0xFF0000FF))
-            end
+            debug.Render()
             UI.isTopScreen = false
         end
     gfx.stop()
@@ -71,6 +68,8 @@ function ScreenManager:Render(screenName)
     UI:Update()
     -- Actual Render
     gfx.render()
+    -- Debug Update
+    debug.Update()
     -- Load pending screen AFTER Render and PostRender to avoid graphic bugs
     self.CurrentScreen = self.ScreenToLoad
 end
